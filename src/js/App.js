@@ -1,13 +1,16 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
 
 export default function App(){
     return(
-        <>
-        <h1>I am app component</h1>
-        <button onClick={() => {
-            electron.notificationApi.sendNotification('My custom notification!');
-        }}>Notify</button>
-        </>
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    <Route index element={<Home />} />   
+                </Routes>
+            </BrowserRouter>
+        </div>
         
     )
 }
