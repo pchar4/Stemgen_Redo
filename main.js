@@ -5,22 +5,6 @@ const isDev = !app.isPackaged;
 
 let mainWindow;
 
-function createLoginWindow() {
-    const loginWindow = new BrowserWindow({
-        width: 400,
-        height: 400,
-        webPreferences: {
-            nodeIntegration: false,
-            worldSafeExecuteJavaScript: true,
-            contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js')
-        }
-    });
-
-    loginWindow.loadFile('index.html');
-
-    return loginWindow;
-}
 
 function createMainWindow() {
     mainWindow = new BrowserWindow({
@@ -48,7 +32,7 @@ function createMainWindow() {
 }
 
 app.whenReady().then(() => {
-    const loginWindow = createLoginWindow();
+    const window = createMainWindow();
 
     ipcMain.on('login-success', () => {
         // Handle successful login here.
